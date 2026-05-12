@@ -1,0 +1,20 @@
+python main.py
+
+# Simulazione base
+python main.py --batch --size 16 --cycles 5000 --rate 0.6
+
+# Con output JSON
+python main.py --batch --size 32 --cycles 10000 --traffic hotspot --output results.json
+
+# Con buffer
+python main.py --batch --size 8 --conflict buffer --buffer-size 8 --rate 0.9
+
+
+python main.py --sweep --sweep-sizes 4,8,16,32 --sweep-patterns uniform,hotspot,complement --cycles 2000 --output sweep.csv
+
+
+# Esegui tutti i test
+python -m pytest tests/ -v
+
+# Con coverage
+python -m pytest tests/ -v --cov=core --cov-report=html
